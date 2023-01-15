@@ -1,0 +1,8 @@
+version: '3.3'
+
+services:
+        app:
+                container_name: websv-tyuubetu
+                build: .
+                volumes:
+                        - /home/ubuntu/tmp-docker/websv-tyuubetsu:/usr/local/apache2/htdocs

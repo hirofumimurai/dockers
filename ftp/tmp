@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  ftpd_server:
+    image: stilliard/pure-ftpd
+    container_name: pure-ftpd
+    ports:
+      - "21:21"
+      - "30000-30009:30000-30009"
+    
+    # docker-compose.ymlがあるディレクトリに、コンテナとの共有ディレクトリを作る
+    volumes: 
+      - "./data:/home/username/"
+      - "./passwd:/etc/pure-ftpd/passwd"
+
+    environment:
+      PUBLICHOST: "localhost"
+      FTP_USER_NAME: username
+      FTP_USER_PASS: mypass
+      FTP_USER_HOME: /home/ftpusers/username
+
+    restart: always
